@@ -7,27 +7,29 @@ import { BiLeftArrowAlt } from "react-icons/bi";
 // to make sure we enter the correct data types
 
 
-
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 const KEY = "ea9dde5c";
 
-
-
 export default function App() {
   // const [movies, setMovies] = useState(tempMovieData); // Movies data
   // const [watched, setWatched] = useState(tempWatchedData); // Watched movie data
   const [movies, setMovies] = useState([]); // Movies data
-  const [watched, setWatched] = useState([]); // Watched movie data
+  // const [watched, setWatched] = useState([]); // Watched movie data
+  const [watched, setWatched] = useState(() => {
+  const saved = localStorage.getItem("watched");
+  return saved ? JSON.parse(saved) : [];
+});
+
+useEffect(() => {
+  localStorage.setItem("watched", JSON.stringify(watched));
+}, [watched]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const tempQuery = "Home";
   const [query, setQuery] = useState(tempQuery); // search query string
   const [selectedId, setSelectedId] = useState(null);
-
-  
-
 
   // useEffect(function () {
   //   fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
@@ -299,7 +301,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     async function getMovieDetails() {
       setLoading(true);
       const res = await fetch(
-        `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+        `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
       );
       const data = await res.json();
       // console.log(data);
