@@ -760,3 +760,110 @@ li div{
 .list li:nth-child(odd) {
   animation-delay: 0.2s;
 }
+
+
+/* Updated Box Component Styles */
+.box {
+  width: 100%;
+  max-width: 45rem;
+  background: var(--color-background-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  position: relative;
+  transition: all var(--transition-normal);
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.box.collapsed {
+  max-height: 6rem;
+  overflow: hidden;
+}
+
+.box-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  transition: all var(--transition-normal);
+}
+
+.box.collapsed .box-content {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Toggle Button - Updated */
+.btn-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-toggle:hover {
+  background: var(--color-primary-light);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.box.collapsed .btn-toggle {
+  transform: rotate(180deg);
+}
+
+.box.collapsed .btn-toggle:hover {
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* Main Layout Adjustments */
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 3rem;
+  justify-content: center;
+  min-height: calc(100vh - 20rem);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+  
+  .box {
+    max-width: 100%;
+  }
+}
+
+/* Scrollbar for Box Content */
+.box-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.box-content::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 3px;
+}
+
+.box-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.6);
+}
