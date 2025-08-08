@@ -22,7 +22,7 @@ export default function App() {
   const [watched, setWatched] = useState([]); // Watched movie data
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const tempQuery = "Moon";
+  const tempQuery = "Home";
   const [query, setQuery] = useState(tempQuery); // search query string
   const [selectedId, setSelectedId] = useState(null);
 
