@@ -14,32 +14,29 @@ const average = (arr) =>
 const KEY = "ea9dde5c";
 
 
-function useLocalStorage(initialState, key) {
-  const [value, setValue] = useState(() => {
-    const saved = localStorage.getItem(key);
-    return saved ? JSON.parse(saved) : initialState;
-  });
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [value, key]);
-
-  return [value, setValue];
-}
-
 
 export default function App() {
   // const [movies, setMovies] = useState(tempMovieData); // Movies data
   // const [watched, setWatched] = useState(tempWatchedData); // Watched movie data
   const [movies, setMovies] = useState([]); // Movies data
-  const [watched, setWatched] = useState([]); // Watched movie data
+  // const [watched, setWatched] = useState([]); // Watched movie data
+  const [watched, setWatched] = useState(() => {
+  const saved = localStorage.getItem("watched");
+  return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+  localStorage.setItem("watched", JSON.stringify(watched));
+}, [watched]);
+
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const tempQuery = "Moon";
   const [query, setQuery] = useState(tempQuery); // search query string
   const [selectedId, setSelectedId] = useState(null);
 
-  const [watched, setWatched] = useLocalStorage([], "watched");
+  
 
 
   // useEffect(function () {
