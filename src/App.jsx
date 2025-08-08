@@ -19,17 +19,7 @@ export default function App() {
   // const [movies, setMovies] = useState(tempMovieData); // Movies data
   // const [watched, setWatched] = useState(tempWatchedData); // Watched movie data
   const [movies, setMovies] = useState([]); // Movies data
-  // const [watched, setWatched] = useState([]); // Watched movie data
-  const [watched, setWatched] = useState(() => {
-  const saved = localStorage.getItem("watched");
-  return saved ? JSON.parse(saved) : [];
-  });
-
-  useEffect(() => {
-  localStorage.setItem("watched", JSON.stringify(watched));
-}, [watched]);
-
-  
+  const [watched, setWatched] = useState([]); // Watched movie data
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const tempQuery = "Moon";
