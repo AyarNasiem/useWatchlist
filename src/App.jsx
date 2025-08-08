@@ -192,20 +192,38 @@ function Main({ children }) {
   return <main className="main">{children}</main>;
 }
 
+// function Box({ children }) {
+//   const [isOpen1, setIsOpen1] = useState(true);
+
+//   return (
+//     <div className="box">
+//       {/*Left Box */}
+//       <button
+//         className="btn-toggle"
+//         onClick={() => setIsOpen1((open) => !open)} // open can be any name, but inside (kawana) and after => !() ... should be same
+//       >
+//         {isOpen1 ? "–" : "+"}
+//       </button>
+//       {/* {isOpen1 && {children} />} */}
+//       {isOpen1 && children} {/* children is a MovieList */}
+//     </div>
+//   );
+// }
+
 function Box({ children }) {
-  const [isOpen1, setIsOpen1] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="box">
-      {/*Left Box */}
+    <div className={`box ${isOpen ? "" : "collapsed"}`}>
       <button
         className="btn-toggle"
-        onClick={() => setIsOpen1((open) => !open)} // open can be any name, but inside (kawana) and after => !() ... should be same
+        onClick={() => setIsOpen((open) => !open)}
       >
-        {isOpen1 ? "–" : "+"}
+        {isOpen ? "–" : "+"}
       </button>
-      {/* {isOpen1 && {children} />} */}
-      {isOpen1 && children} {/* children is a MovieList */}
+      <div className="box-content">
+        {children}
+      </div>
     </div>
   );
 }
