@@ -46,15 +46,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 1.6rem;
   line-height: 1.6;
-  color: var(--color-text);
-  background: linear-gradient(135deg, 
-    var(--color-background-primary) 0%, 
-    #1a1a2e 25%, 
-    #16213e 50%, 
-    #0f3460 75%, 
-    var(--color-background-primary) 100%
-  );
-  background-attachment: fixed;
+  background-color: #1f2937;
   min-height: 100vh;
   padding: 2rem;
   overflow-x: hidden;
@@ -67,10 +59,6 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
   z-index: -1;
   animation: backgroundShift 20s ease-in-out infinite alternate;
 }
@@ -91,7 +79,7 @@ body::before {
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius-xl);
-  box-shadow: var(--shadow-xl), var(--shadow-glow);
+  /* box-shadow: var(--shadow-xl), var(--shadow-glow); */
   margin-bottom: 3rem;
   position: relative;
   overflow: hidden;
@@ -109,7 +97,7 @@ body::before {
     rgba(255, 255, 255, 0.05), 
     transparent
   );
-  animation: shimmer 3s infinite;
+  /* animation: shimmer 3s infinite; */
 }
 
 @keyframes shimmer {
@@ -123,12 +111,11 @@ body::before {
   align-items: center;
   gap: 1.2rem;
   position: relative;
+  cursor: pointer;
 }
 
 .logo span {
   font-size: 4rem;
-  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
-  animation: bounce 2s infinite ease-in-out;
 }
 
 @keyframes bounce {
@@ -145,7 +132,6 @@ body::before {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientShift 3s ease-in-out infinite;
 }
 
 @keyframes gradientShift {
@@ -217,7 +203,6 @@ body::before {
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius-xl);
-  box-shadow: var(--shadow-xl);
   overflow: hidden;
   position: relative;
   transition: all var(--transition-normal);
@@ -225,9 +210,6 @@ body::before {
 
 .box:hover {
   transform: translateY(-5px);
-  box-shadow: 
-    var(--shadow-xl), 
-    0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 /* Toggle Button */
@@ -249,7 +231,6 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-md);
 }
 
 .btn-toggle:hover {
@@ -258,7 +239,6 @@ body::before {
   box-shadow: var(--shadow-lg);
 }
 
-/* Loading and Error States */
 .loader {
   text-align: center;
   font-size: 2.2rem;
@@ -382,7 +362,7 @@ body::before {
   font-weight: 500;
 }
 
-/* Delete Button */
+/* Delete */
 .btn-delete {
   position: absolute;
   right: 2rem;
@@ -424,7 +404,7 @@ body::before {
   border-radius: var(--border-radius-lg);
   margin: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow-lg);
+  /* box-shadow: var(--shadow-lg); */
 }
 
 .summary h2 {
@@ -466,7 +446,6 @@ body::before {
 
 .summary p span:first-child {
   font-size: 1.8rem;
-  filter: drop-shadow(0 0 5px currentColor);
 }
 
 li div{
@@ -644,7 +623,7 @@ li div{
   filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.6));
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   html {
     font-size: 55%;
@@ -706,7 +685,7 @@ li div{
   }
 }
 
-/* Scrollbar Styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -725,7 +704,6 @@ li div{
   background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary));
 }
 
-/* Selection Styling */
 ::selection {
   background: rgba(139, 92, 246, 0.3);
   color: var(--color-text);
@@ -762,8 +740,13 @@ li div{
 }
 
 
-/* Updated Box Component Styles */
+
+
+
+
+
 .box {
+  margin: 0 auto;
   width: 100%;
   max-width: 45rem;
   background: var(--color-background-card);
@@ -798,7 +781,6 @@ li div{
   overflow: hidden;
 }
 
-/* Toggle Button - Updated */
 .btn-toggle {
   position: absolute;
   top: 1.5rem;
@@ -834,7 +816,6 @@ li div{
   transform: rotate(180deg) scale(1.1);
 }
 
-/* Main Layout Adjustments */
 .main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -854,7 +835,6 @@ li div{
   }
 }
 
-/* Scrollbar for Box Content */
 .box-content::-webkit-scrollbar {
   width: 6px;
 }
